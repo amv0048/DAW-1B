@@ -1,30 +1,28 @@
 package Abstraccion.Ejercicio99;
 
-public class Coleccion {
+public abstract class Coleccion {
     private int contador;
     private int[] array;
-    private final int TAM;
+    protected static final int TAM = 10;
     
     public Coleccion(){
-        this.TAM = 10;
         this.array = new int[TAM];
-        this.contador = array.length;
+        this.contador = 0;
     }
     
     public Coleccion(int num){
-        this.TAM = 10;
         if (num <= 0)
             this.array = new int[TAM];
         else
             this.array = new int[num];
-        this.contador = array.length;
+        this.contador = 0;
     }
     
     public int getElementos(){
         return this.contador;
     }
     
-    public int getElementos(int pos){
+    public int getElemento(int pos){
         if (array[pos] <= 0 && array[pos] >= array.length)
             return -1;
         return array[pos];
@@ -38,25 +36,13 @@ public class Coleccion {
         return true;
     }
     
-    public void aniadir(int elemento){
-        if (!lleno()){
-            for (int i = 0; i < array.length; i++) {
-                if (array[i] == 0)
-                    elemento = array[i];
-            }
-        }   
-    }
+    public abstract void aniadir(int elemento);
     
-    public void eliminar(int elemento){
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == elemento)
-                array[i] = 0;
-        }
-    }
+    public abstract void eliminar(int elemento);
     
     public boolean contiene(int elemento){
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == elemento)
+        for (int i = 0; i < this.contador; i++) {
+            if (this.array[i] == elemento)
                 return true;
         }
         return false;
@@ -65,22 +51,15 @@ public class Coleccion {
     public String toString(){
         String res = "[";
         
-        for (int i = 0; i < array.length; i++) {
-            if (i == array.length - 1)
-                res += "]";
-            res += array[i]+ " ";
+        for (int i = 0; i < contador; i++) {
+            if (i < contador-1)
+                res += array[i]+ " ";
+            else res+= array[i]+"]";
         }
         return res;
     }
-    
-    // Utils
-    
-    public boolean lleno(){
-        for (int i = 0; i < this.array.length; i++) {
-            if (array[i] == 0)
-                return false;
-        }
-        return true;
-    }
-    
+
+    public int getContador() {
+        return this.contador;
+    }  
 }
