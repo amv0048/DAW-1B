@@ -15,25 +15,12 @@ public class Campeon extends Personaje {
         super(nombre, vida, x, y, escudo, ataque);
         this.puntosMagia = puntosMagia;
         this.nivel = 1;
-        if (!rol.equalsIgnoreCase("Tanque")
-                || !rol.equalsIgnoreCase("Support")
-                || !rol.equalsIgnoreCase("Mago")
-                || !rol.equalsIgnoreCase("Mago"))
-            this.rol = "Carry";
-        else
-            this.rol = rol;
         listaH[0] = primera;
         
         if (rol.equals("Tanque")){
             this.puntosMagia = 100;
             this.vida = asignarVidaP(vida) + 150;
             this.escudo = asignarEscudoP(escudo);
-            this.ataque = asignarAtaqueP(ataque);
-        }
-        else if(rol.equals("Carry")){
-            this.puntosMagia = 300;
-            this.vida = asignarVidaP(vida);
-            this.escudo = asignarEscudoP(escudo) + 100;
             this.ataque = asignarAtaqueP(ataque);
         }
         else if(rol.equals("Support")){
@@ -48,12 +35,18 @@ public class Campeon extends Personaje {
             this.escudo = asignarEscudoP(escudo) + 150;
             this.ataque = asignarAtaqueP(ataque);
         }
-        // Jungla
-        else{
+        else if (rol.equals("Jungla")){
             this.puntosMagia = 200;
             this.vida = asignarVidaP(vida) + 100;
             this.escudo = asignarEscudoP(escudo);
             this.ataque = asignarAtaqueP(ataque);
+        }
+        else{
+            this.rol = "Carry";
+            this.puntosMagia = 300;
+            this.vida = asignarVidaP(vida);
+            this.escudo = asignarEscudoP(escudo) + 100;
+            this.ataque = asignarAtaqueP(ataque); 
         }
     }
     
