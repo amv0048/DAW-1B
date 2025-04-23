@@ -78,14 +78,17 @@ public abstract class Coleccion {
     }
     
     public String toString(){
+        boolean primero = false;
         String res = "[";
-        int totales = 0;
+        
         for (int i = 0; i < this.array.length; i++) {
             if (this.getElemento(i) > -1){
-                if (i < this.contador-1)
-                    res += array[i] + ",";
-                else    
-                    res += array[i];
+                if (!primero){
+                    res += getElemento(i);
+                    primero = true;
+                }
+                else
+                    res += "," + getElemento(i);
             }
         }
         res+= "]";
