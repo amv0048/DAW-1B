@@ -42,13 +42,27 @@ public class Conjunto extends Coleccion {
     
     
     public Conjunto union(Conjunto a){
-        Conjunto result = new Conjunto(this.contador + a.getContador());
+        int cont = 0;
+        
+        for (int i = 0; i < this.contador; i++) {
+            if (!this.contiene(a.array[i]))
+                cont++;
+        }
+        cont += a.getContador();
+        
+        Conjunto result = new Conjunto(cont);
         for (int i = 0; i < this.contador; i++) {
             result.aniadir(this.array[i]);
         }
-        for (int i = a.getContador(); i < result.getContador(); i++) {
-            result.aniadir(a.array[i]);
+        for (int i = 0; i < result.getContador(); i++) {
+            if (!result.contiene(a.array[i]))
+                result.aniadir(a.array[i]);
         }
+        System.out.println("cont: "+cont);
+        System.out.println("a: "+a.getContador());
+        System.out.println("this: "+this.getContador());
+        System.out.println("result: "+result.array.length);
+        
         return result;
     }
     
@@ -107,7 +121,7 @@ public class Conjunto extends Coleccion {
     
     @Override
     public int getContador() {
-        return super.getContador();
+        return this.contador;
     }
 
     public void setContador(int contador) {
