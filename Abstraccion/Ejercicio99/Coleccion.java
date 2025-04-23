@@ -46,14 +46,13 @@ public abstract class Coleccion {
     }
     
     public void aniadir(int elemento){
-        if (!lleno())
+        if (!lleno()){
             setElemento(elemento);
+            contador++;
+        }
         else{
             int nuevoArray[] = new int[this.array.length*2];
-            for (int i = 0; i < this.array.length; i++) {
-                nuevoArray[i] = array[i];
-                
-            }
+            setArray(nuevoArray);
         }
     }
     
@@ -71,7 +70,7 @@ public abstract class Coleccion {
     }
     
     public boolean contiene(int elemento){
-        for (int i = 0; i < this.contador; i++) {
+        for (int i = 0; i < this.array.length; i++) {
             if (this.array[i] == elemento)
                 return true;
         }
@@ -82,27 +81,28 @@ public abstract class Coleccion {
         String res = "[";
         int totales = 0;
         for (int i = 0; i < this.array.length; i++) {
-            
             if (this.getElemento(i) > -1){
-                res += array[i];
-                totales++;
-                if (totales != this.contador -1)
-                    res += ",";
+                if (i < this.contador-1)
+                    res += array[i] + ",";
+                else    
+                    res += array[i];
             }
         }
         res+= "]";
         return res;
     }
 
+    // Utils
     
     public int[] getArray(){
         return this.array;
     }
     
     public void setArray(int[] nuevo){
-        for (int i = 0; i < nuevo.length; i++) {
-            this.array[i] = nuevo[i];
+        for (int i = 0; i < this.array.length; i++) {
+            nuevo[i] = this.array[i];
         }
+        
     }
     
     private void inicializar(){
@@ -113,6 +113,6 @@ public abstract class Coleccion {
     }
     
     public boolean lleno(){
-        return getElementos() == getArray().length-1;
+        return getElementos() == this.array.length;
     }
 }
