@@ -33,26 +33,15 @@ public abstract class Coleccion {
         return this.contador <= 0;
     }
     
-    public void setElemento(int elemento){
+    public void aniadir(int elemento){
         int i = 0;
         boolean seteado = false;
-        while (!seteado && i < this.array.length) {            
+        while (i < this.array.length && !seteado) {            
             if (this.array[i] == -1){
                 this.array[i] = elemento;
                 seteado = true;
             }
             i++;
-        }
-    }
-    
-    public void aniadir(int elemento){
-        if (!lleno()){
-            setElemento(elemento);
-            contador++;
-        }
-        else{
-            int nuevoArray[] = new int[this.array.length*2];
-            setArray(nuevoArray);
         }
     }
     
@@ -116,6 +105,6 @@ public abstract class Coleccion {
     }
     
     public boolean lleno(){
-        return getElementos() == this.array.length;
+        return this.getElementos() == this.array.length;
     }
 }
