@@ -13,14 +13,14 @@ public class Conjunto extends Coleccion {
     @Override
     public void aniadir(int elemento) {
         if (!contiene(elemento) && !lleno()){
-            setElemento(elemento);
+            super.aniadir(elemento);
             this.contador++;
         }
-        /*else {
+        else {
             int nuevoArray[] = new int[this.array.length*2];
             setArray(nuevoArray);
             this.contador++;
-        }*/
+        }
     }
 
     @Override
@@ -53,11 +53,6 @@ public class Conjunto extends Coleccion {
         for (int i = 0; i < result.array.length; i++) {
             result.aniadir(a.array[i]);
         }
-        System.out.println("cont: "+cont);
-        System.out.println("a: "+a.getElementos());
-        System.out.println("this: "+this.getElementos());
-        System.out.println("result: "+result.array.length);
-
         return result;
     }
     
