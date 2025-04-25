@@ -7,11 +7,19 @@ public class Partitura {
     private final static int MAX_NOTAS = 100;
     private final static int MIN_NOTAS = 1;
 
-    public Partitura(String nombre, String autor) {
+    public Partitura(String nombre, String autor, int numNotas) {
         this.nombre = nombre;
         this.autor = autor;
-        lista = new Nota[MAX_NOTAS];
+        if (numNotas >= MIN_NOTAS && numNotas <= MAX_NOTAS)
+            lista = new Nota[numNotas];
     }
+
+    public Partitura(int numNotas) {
+        if (numNotas >= MIN_NOTAS && numNotas <= MAX_NOTAS)
+            lista = new Nota[numNotas];
+    }
+    
+    
     
     public int numNotas(){
         int contador = 0;
