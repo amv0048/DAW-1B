@@ -1,27 +1,50 @@
 package Abstraccion.Ejercicio102;
 
 public class Nota {
-    private String valor;
+    private int valor;
     private int duracion; // Segundos
+    private String nombre;
 
-    public Nota(String valor, int duracion) {
+    public Nota(int valor, int duracion) {
         if (duracion >= 1 && duracion <= 10)
             this.duracion = duracion;
         else this.duracion = 1;
         
-        if (!valor.equals("do") || !valor.equals("re")|| !valor.equals("mi") || 
-                !valor.equals("fa") ||!valor.equals("sol")
-                ||!valor.equals("la") ||!valor.equals("si"))
-            this.valor = "do";
+        switch (valor) {
+            case 1:
+             this.nombre = "do";   
+                break;
+            case 2:
+             this.nombre = "re";   
+                break;
+            case 3:
+             this.nombre = "mi";   
+                break;
+            case 4:
+             this.nombre = "fa";   
+                break;
+            case 5:
+             this.nombre = "sol";   
+                break;
+            case 6:
+             this.nombre = "la";   
+                break;
+            case 7:
+             this.nombre = "si";   
+                break;
+            default:
+                this.nombre = "do";
+        }
     }
     
     public Nota() {
-        this.valor = "do";
+        this.valor = 1;
+        this.nombre = "do";
         this.duracion = 1;
     }
     
     @Override
     public String toString(){
-        return "["+this.valor+","+this.duracion+"]";
+        return "["+this.nombre+","+this.duracion+"]";
     }
 }
