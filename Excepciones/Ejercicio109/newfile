@@ -1,0 +1,36 @@
+ Suponiendo que existe el siguiente método:
+public int accesoIndice(int [] lista, int j){
+    if ((j >= 0) && (j<lista.length)){
+        return lista[j];
+      }
+      else{
+        throw new RuntimeException("El indice "+j+ "
+        no existe en el array");
+       }
+}
+
+¿Que se obtiene al ejecutar el siguiente código?
+public static void main(String [] args){
+ int [] lista = new int[15];
+ accesoIndice(lista,15);
+}
+
+El indice 15 no existe en el array
+
+¿Sería necesario mejorar ese código? ¿Por qué?
+
+¿Que ocurre si hacemos el siguiente cambio en el método?
+    Que si daria error al intentar acceder a una posicion del array que
+    no existe
+
+
+public int accesoIndice(int [] lista, int j)
+if ((j >= 0) && (j<=lista.length)){
+ return lista[j];
+ }
+ else{
+ throw new RuntimeException("El indice "+j+ "
+ no existe en el array");
+ }
+ }
+}
